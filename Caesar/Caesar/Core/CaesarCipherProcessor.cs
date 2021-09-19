@@ -33,7 +33,12 @@ namespace Caesar.Core
         {
             var alphabetBeginning = char.IsUpper(input) ? 'A' : 'a';
 
-            var result = (operation(input, key) - alphabetBeginning) % 26 + alphabetBeginning;
+            var absCharPosition = (operation(input, key)) - alphabetBeginning;
+            if (absCharPosition < 0)
+            {
+                absCharPosition = 26 + absCharPosition;
+            }
+            var result = ((absCharPosition % 26) + alphabetBeginning);
 
             return (char)result;
         }

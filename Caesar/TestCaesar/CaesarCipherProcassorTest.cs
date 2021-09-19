@@ -10,9 +10,10 @@ namespace TestCaesar
         {
         }
 
-        [TestCase("YZa", 3, "BCd")]
+        [TestCase("xyZ", 3, "abC")]
+        [TestCase("BCd", 23, "YZa")]
         [TestCase("hfjdk", 0, "hfjdk")]
-        [TestCase("eFg", 2, "gHi")]
+        [TestCase("gHi", 24, "eFg")]
         public void CesarEncryptionProcessorTest_Positive(string input, int key, string expected)
         {
             var processor = new CaesarCipherProcessor();
@@ -21,9 +22,11 @@ namespace TestCaesar
             Assert.AreEqual(expected, result);
         }
 
-        //[TestCase("BCd", 3, "YZa")]
+        [TestCase("CDE", 5, "XYZ")]
         [TestCase("hfjdk", 0, "hfjdk")]
         [TestCase("gHi", 2, "eFg")]
+        [TestCase("eFg", 24, "gHi")]
+
         public void CesarDecryptionProcessorTest_Positive(string input, int key, string expected)
         {
             var processor = new CaesarCipherProcessor();
